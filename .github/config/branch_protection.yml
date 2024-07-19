@@ -1,0 +1,18 @@
+branch_protection:
+  main: # Replace with your branch name
+    required_status_checks:
+      strict: true
+      contexts:
+      - ci/circleci: build
+    required_pull_request_reviews:
+      required_approving_review_count: 2
+      dismiss_stale_reviews: true
+      require_code_owner_reviews: true
+    enforce_admins: true
+    restrictions:
+      users:
+      - user1
+      - user2
+      teams:
+      - team1
+      - team2

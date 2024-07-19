@@ -13,9 +13,10 @@ jobs:
       - name: Apply branch protection rules
         run: |
           echo "Applying branch protection rules to ${{ github.repository }}"
+          echo "${{ secrets.MY_GITHUB_PAT }}"
 
           curl -X PUT \
-            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Authorization: token ${{ secrets.MY_GITHUB_PAT }}" \
             -H "Accept: application/vnd.github.v3+json" \
             -d '{
               "required_status_checks": {
@@ -25,7 +26,7 @@ jobs:
               "enforce_admins": true,
               "required_pull_request_reviews": {
                 "dismissal_restrictions": {
-                  "users": ["user1"],  # Replace with actual GitHub usernames
+                  "users": ["ahmedamsoliman-1"],
                   "teams": []
                 },
                 "dismiss_stale_reviews": true,
@@ -33,7 +34,7 @@ jobs:
                 "required_approving_review_count": 1
               },
               "restrictions": {
-                "users": ["user1"],  # Replace with actual GitHub usernames
+                "users": ["user1"],
                 "teams": []
               },
               "required_linear_history": true,
@@ -42,4 +43,4 @@ jobs:
             }' \
             https://api.github.com/repos/${{ github.repository }}/branches/main/protection
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MY_GITHUB_PAT: ${{ secrets.MY_GITHUB_PAT }}

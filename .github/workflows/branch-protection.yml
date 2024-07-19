@@ -1,0 +1,22 @@
+name: Apply Branch Protection
+
+on:
+  push:
+    branches:
+      - main # Change to your branch
+
+jobs:
+  branch-protection:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Apply branch protection rules
+        uses: Hatzelencio/branch-protection@v0.0.0
+        with:
+          path: .github/config/branch_protection.yml
+          repository: ${{ github.repository }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

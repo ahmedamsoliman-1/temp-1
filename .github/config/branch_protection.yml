@@ -10,9 +10,5 @@ branch_protection:
       require_code_owner_reviews: true
     enforce_admins: true
     restrictions:
-      users:
-      - user1
-      - user2
-      teams:
-      - team1
-      - team2
+      users: ahmedamsoliman-1
+      teams: []

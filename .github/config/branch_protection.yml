@@ -1,14 +1,15 @@
 branch_protection:
-  main: # Replace with your branch name
-    required_status_checks:
-      strict: true
-      contexts:
-      - ci/circleci: build
-    required_pull_request_reviews:
-      required_approving_review_count: 2
-      dismiss_stale_reviews: true
-      require_code_owner_reviews: true
-    enforce_admins: true
-    restrictions:
-      users: ahmedamsoliman-1
-      teams: []
+- branch: main # Replace with your branch name
+  required_status_checks:
+    strict: true
+    contexts:
+    - ci/circleci: build # Replace with your required status checks
+  required_pull_request_reviews:
+    required_approving_review_count: 2
+    dismiss_stale_reviews: true
+    require_code_owner_reviews: true
+  enforce_admins: true
+  restrictions:
+    users:
+    - ahmedamsoliman-1 # Replace with the actual GitHub username
+    teams: [] # No teams required

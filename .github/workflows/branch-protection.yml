@@ -3,7 +3,7 @@ name: Apply Branch Protection
 on:
   push:
     branches:
-      - main # Change to your branch
+      - main # Change to your branch name
 
 jobs:
   branch-protection:
@@ -13,6 +13,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: List files in .github/config/
+        run: ls -la .github/config/
+
       - name: Apply branch protection rules
         uses: Hatzelencio/branch-protection@v1.0.0
         with:
@@ -20,29 +23,3 @@ jobs:
           repository: ${{ github.repository }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-          # name: Apply Branch Protection
-
-# on:
-#   push:
-#     branches:
-#       - main # Change to your branch name
-
-# jobs:
-#   branch-protection:
-#     runs-on: ubuntu-latest
-
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v3
-
-#       - name: List files in .github/config/
-#         run: ls -la .github/config/
-
-#       - name: Apply branch protection rules
-#         uses: Hatzelencio/branch-protection@v1.0.0 # Use the appropriate version of the action
-#         with:
-#           path: .github/config/branch_protection.yml
-#           repository: ${{ github.repository }}
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

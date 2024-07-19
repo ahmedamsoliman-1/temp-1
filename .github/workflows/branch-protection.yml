@@ -13,13 +13,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: List files in .github/config/
-        run: ls -la .github/config/
-
       - name: Apply branch protection rules
-        uses: Hatzelencio/branch-protection@v1.0.0
+        uses: peter-evans/branch-protection@v3
         with:
-          path: .github/config/branch_protection.yml
-          repository: ${{ github.repository }}
+          branch: main # Change to your branch name
+          required_status_checks: 'ci/circleci: build'
+          required_approving_review_count: 2
+          dismiss_stale_reviews: true
+          require_code_owner_reviews: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

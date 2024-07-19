@@ -12,7 +12,8 @@ jobs:
     steps:
       - name: Apply branch protection rules
         run: |
-          echo "Repository: ${{ github.repository }}"          
+          echo "Repository: ${{ github.repository }}"
+          echo "Repository: ${{ github.repository }}"
           curl -X PATCH \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \

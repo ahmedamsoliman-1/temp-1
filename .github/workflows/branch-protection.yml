@@ -13,10 +13,10 @@ jobs:
       - name: Apply branch protection rules
         run: |
           echo "Applying branch protection rules to ${{ github.repository }}"
-          echo "${{ secrets.MY_GITHUB_PAT }}"
+          echo "token: ${{ secrets.TOK }}"
 
           curl -X PUT \
-            -H "Authorization: token ${{ secrets.MY_GITHUB_PAT }}" \
+            -H "Authorization: token ${{ secrets.TOK }}" \
             -H "Accept: application/vnd.github.v3+json" \
             -d '{
               "required_status_checks": {
@@ -43,4 +43,4 @@ jobs:
             }' \
             https://api.github.com/repos/${{ github.repository }}/branches/main/protection
         env:
-          MY_GITHUB_PAT: ${{ secrets.MY_GITHUB_PAT }}
+          MY_GITHUB_PAT: ${{ secrets.TOK }}

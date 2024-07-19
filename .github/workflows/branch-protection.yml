@@ -12,6 +12,9 @@ jobs:
     steps:
       - name: Apply branch protection rules
         run: |
+          echo "Repository: ${{ github.repository }}"
+          echo "Token: ${{ secrets.GITHUB_TOKEN }}"
+          
           curl -X PATCH \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
@@ -31,7 +34,7 @@ jobs:
               "allow_deletions": false,
               "required_conversation_resolution": true,
               "restrictions": {
-                "users": ["your-username"],
+                "users": ["ahmedamsoliman-1"],
                 "teams": []
               }
             }' \
